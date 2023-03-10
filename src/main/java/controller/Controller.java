@@ -17,7 +17,9 @@
 
 package controller;
 
+import functions.AdminFunctions;
 import java.util.Scanner;
+import static model.Toy.toysList;
 
 public class Controller {
     public static void run(){
@@ -26,6 +28,7 @@ public class Controller {
         Boolean player = false;
         String playerName;
         Scanner input = new Scanner(System.in);
+        AdminFunctions adminWork = new AdminFunctions();
         while (online) {
             System.out.println("1 - для входа от имени администратора\n" +
                     "2 - для входа игрока\n");
@@ -42,9 +45,12 @@ public class Controller {
                                 "6 - Завершить работу программы\n");
                         switch (input.next()) {
                             case "1":
+                                adminWork.getToysList();
                                 System.out.println("список игрушек");
                                 break;
                             case "2":
+                                adminWork.putToy();
+                                toysList.forEach(n -> System.out.println(n.getToyInfo())); // проверка, добавляет, но меняет количество при совпадении только у первой позиции
                                 System.out.println("Добавить");
                                 break;
                             case "3":

@@ -5,12 +5,6 @@ public class Functions {
     public void play() {
     }
 
-    public void putToy() {
-    }
-
-    public void getToysList() {
-    }
-
     public void removeToy() {
     }
 
