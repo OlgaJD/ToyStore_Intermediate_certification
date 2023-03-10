@@ -1,3 +1,5 @@
+package functions;
+
 public class Functions {
 
     public void play() {

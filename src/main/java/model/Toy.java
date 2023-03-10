@@ -1,3 +1,5 @@
+package model;
+
 public class Toy {
     protected int id;
     protected String name;
