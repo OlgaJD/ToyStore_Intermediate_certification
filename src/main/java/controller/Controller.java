@@ -18,6 +18,9 @@
 package controller;
 
 import functions.AdminFunctions;
+import view.ErrorView;
+import view.UserView;
+
 import java.util.Scanner;
 import static model.Toy.toysList;
 
@@ -29,20 +32,16 @@ public class Controller {
         String playerName;
         Scanner input = new Scanner(System.in);
         AdminFunctions adminWork = new AdminFunctions();
+        UserView userView = new UserView();
+        ErrorView ErrorView = new ErrorView();
         while (online) {
-            System.out.println("1 - для входа от имени администратора\n" +
-                    "2 - для входа игрока\n");
+            userView.mainMenu();
             switch (input.next()) {
                 case "1":
                     admin = true;
                     System.out.println("Вы вошли как администратор. Выберите пункт меню: ");
                     while (admin) {
-                        System.out.println("1 - Посмотреть список игрушек учавствующих в розыгрыше\n"+
-                                "2 - Добавить новую игрушку\n" +
-                                "3 - Убрать игрушку\n" +
-                                "4 - Посмотреть очередь на выдачу\n" +
-                                "5 - Выйти из режима администратора\n"+
-                                "6 - Завершить работу программы\n");
+                        userView.adminMenu();
                         switch (input.next()) {
                             case "1":
                                 adminWork.getToysList();
@@ -64,12 +63,13 @@ public class Controller {
                                 admin = false;
                                 break;
                             case "6":
-                                System.out.println("До новых встреч!");
+                                userView.goodbye();
                                 admin = false;
                                 online = false;
+                                input.close();
                                 break;
                             default:
-                                System.out.println("Команда введена неверно\n");
+                                ErrorView.incorrectInput();
                         }
                     }
                     break;
@@ -80,10 +80,7 @@ public class Controller {
                     playerName = input.next();
                     System.out.println("Отлично, "+ playerName + "!\nВыберите дальнейшую команду:\n");
                     while (player){
-                        System.out.println("" +
-                                "1 - чтобы начать играть нажмите\n" +
-                                "2 - чтобы забрать приз нажмите\n" +
-                                "3 - для выхода из игры нажмите\n");
+                        userView.playerMenu();
                         switch (input.next()) {
                             case "1":
                                 System.out.println("играть");
@@ -97,12 +94,12 @@ public class Controller {
                                 System.out.println("");
                                 break;
                             default:
-                                System.out.println("Команда введена неверно\n");
+                                ErrorView.incorrectInput();
                         }
                     }
                     break;
                 default:
-                    System.out.println("Команда введена неверно\n");
+                    ErrorView.incorrectInput();
             }
 
         }
