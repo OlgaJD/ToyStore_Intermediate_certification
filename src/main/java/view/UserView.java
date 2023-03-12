@@ -1,5 +1,7 @@
 package view;
 
+import model.Toy;
+
 import java.util.Scanner;
 
 public class UserView {
@@ -64,7 +66,7 @@ public class UserView {
     public void adminMenu() {
         System.out.println("1 - Посмотреть список игрушек учавствующих в розыгрыше\n"+
                 "2 - Добавить новую игрушку\n" +
-                "3 - Убрать игрушку по названию (1 шт.)\n" +
+                "3 - Быстрое удаление игрушки по названию (1 шт.)\n" +
                 "4 - Посмотреть очередь на выдачу\n" +
                 "5 - Выйти из режима администратора\n"+
                 "6 - Завершить работу программы\n");
@@ -74,6 +76,10 @@ public class UserView {
         System.out.println("1 - чтобы начать играть\n" +
                 "2 - чтобы забрать приз\n" +
                 "3 - для выхода из игры\n");
+    }
+
+    public void greeting(Toy prize) {
+        System.out.println("Поздравляем! Ваш выйгрыш - " + prize.getName());
     }
 
     public void goodbye() {

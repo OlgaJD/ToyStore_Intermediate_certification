@@ -51,7 +51,6 @@ public class AdminFunctions {
 
     public void removeToy(){
         UserView adminView = new UserView();
-
         ErrorView adminErrorView = new ErrorView();
         String nameToy = adminView.giveToyName();
         int index = -1;

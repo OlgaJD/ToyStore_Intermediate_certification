@@ -18,6 +18,10 @@
 package controller;
 
 import functions.AdminFunctions;
+import functions.FileWorker;
+import functions.PlayerFunctions;
+import functions.SystemFunction;
+import model.Toy;
 import view.ErrorView;
 import view.UserView;
 
@@ -31,9 +35,12 @@ public class Controller {
         Boolean player = false;
         String playerName;
         Scanner input = new Scanner(System.in);
+        SystemFunction systemWork = new SystemFunction();
         AdminFunctions adminWork = new AdminFunctions();
+        PlayerFunctions playerWork = new PlayerFunctions();
         UserView userView = new UserView();
         ErrorView ErrorView = new ErrorView();
+        FileWorker fileWorker = new FileWorker();
         while (online) {
             userView.mainMenu();
             switch (input.next()) {
@@ -44,7 +51,6 @@ public class Controller {
                         userView.adminMenu();
                         switch (input.next()) {
                             case "1":
-                                userView.actualToysList();
                                 adminWork.getToysList();
                                 break;
                             case "2":
@@ -84,12 +90,19 @@ public class Controller {
                         userView.playerMenu();
                         switch (input.next()) {
                             case "1":
-                                System.out.println("играть");
+                                Toy prize = playerWork.play();
+                                systemWork.putPrizeToQue(prize);
+                                userView.greeting(prize);
+//                                System.out.println("играть");
                                 break;
                             case "2":
                                 System.out.println("забрать");
+                                systemWork.getPrizeQue();
+                                fileWorker.saveData();
                                 break;
                             case "3":
+
+
                                 System.out.println("выход");
                                 player = false;
                                 System.out.println("");

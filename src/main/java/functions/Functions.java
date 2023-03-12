@@ -5,8 +5,6 @@ public class Functions {
     public void play() {
     }
 
-    public void removeToy() {
-    }
 
     public void putPrize() {
 

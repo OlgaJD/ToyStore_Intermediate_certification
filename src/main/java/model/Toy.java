@@ -59,4 +59,13 @@ public class Toy {
                         " Amount: " + amount +
                         " Drop: " + dropChance;
     }
+
+    public String getToyInfoArchive() {
+        return  " ID: " + id +
+                " Name: " + name +
+                " Amount: 1"  +
+                " Drop: " + dropChance;
+    }
+
+
 }
