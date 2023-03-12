@@ -64,7 +64,7 @@ public class Controller {
                                 System.out.println("Убрать");
                                 break;
                             case "4":
-                                System.out.println("очередь");
+                                systemWork.getPrizeQue();
                                 break;
                             case "5":
                                 admin = false;
@@ -90,19 +90,16 @@ public class Controller {
                         userView.playerMenu();
                         switch (input.next()) {
                             case "1":
-                                Toy prize = playerWork.play();
-                                systemWork.putPrizeToQue(prize);
-                                userView.greeting(prize);
-//                                System.out.println("играть");
+                                Toy prize = playerWork.play();  // получили игрушку
+                                systemWork.putPrizeToQue(prize);  // добавили игрушку в очередь
+                                userView.greeting(prize); // поздравили пользователя написали что выйгрвл
+                                systemWork.removeToyAfterWonPrize(prize);
                                 break;
-                            case "2":
-                                System.out.println("забрать");
-                                systemWork.getPrizeQue();
+                            case "2": // забрать приз
                                 fileWorker.saveData();
+                                systemWork.removePrizeFromQue();
                                 break;
                             case "3":
-
-
                                 System.out.println("выход");
                                 player = false;
                                 System.out.println("");

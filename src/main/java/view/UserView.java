@@ -82,6 +82,10 @@ public class UserView {
         System.out.println("Поздравляем! Ваш выйгрыш - " + prize.getName());
     }
 
+//    public void prizOut() {
+//        System.out.print("Спасибо за участие! Вы можете забрать свой приз - ");
+//    }
+
     public void goodbye() {
         System.out.println("До новых встреч!");
     }
