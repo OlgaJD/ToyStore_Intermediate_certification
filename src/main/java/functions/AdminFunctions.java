@@ -1,7 +1,7 @@
 package functions;
 
 import static model.Toy.toysList;
-import view.UserView;
+import view.*;
 import model.Toy;
 
 public class AdminFunctions {
@@ -47,6 +47,28 @@ public class AdminFunctions {
             adminView.succesToyAdd();
         }
 
+    }
+
+    public void removeToy(){
+        UserView adminView = new UserView();
+
+        ErrorView adminErrorView = new ErrorView();
+        String nameToy = adminView.giveToyName();
+        int index = -1;
+        for (int i = 0; i < toysList.size(); i++) {
+            if (toysList.get(i).getName().equals(nameToy)) {
+                index = i;
+                if (toysList.get(i).getAmount() == 1) {
+                    toysList.remove(index);
+                }
+                else {
+                    int count = toysList.get(i).getAmount();
+                    toysList.get(i).setAmount(count-1);
+                }
+                return;
+            }
+        }
+        adminErrorView.unSuccesToyFind();
     }
 
 }

@@ -8,4 +8,8 @@ public class ErrorView {
     public void actualToysListIsEmpty() {
         System.out.println("Список пуст");
     }
+
+    public void unSuccesToyFind() {
+        System.out.println("Такой игрушки нет в списке для розыгрыша\n");
+    }
 }

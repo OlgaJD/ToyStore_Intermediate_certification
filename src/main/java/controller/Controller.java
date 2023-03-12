@@ -44,8 +44,8 @@ public class Controller {
                         userView.adminMenu();
                         switch (input.next()) {
                             case "1":
+                                userView.actualToysList();
                                 adminWork.getToysList();
-                                System.out.println("список игрушек");
                                 break;
                             case "2":
                                 adminWork.putToy();
@@ -53,13 +53,14 @@ public class Controller {
                                 System.out.println("Добавить");
                                 break;
                             case "3":
+                                adminWork.removeToy();
+                                userView.succesToyremove();
                                 System.out.println("Убрать");
                                 break;
                             case "4":
                                 System.out.println("очередь");
                                 break;
                             case "5":
-                                System.out.println("Выйти");
                                 admin = false;
                                 break;
                             case "6":
