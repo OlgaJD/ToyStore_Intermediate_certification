@@ -41,12 +41,15 @@ public class Controller {
                                 adminWork.removeToy();
                                 break;
                             case "4":
-                                systemWork.getPrizeQue();
+                                adminWork.removeToysByID();
                                 break;
                             case "5":
-                                admin = false;
+                                systemWork.getPrizeQue();
                                 break;
                             case "6":
+                                admin = false;
+                                break;
+                            case "7":
                                 userView.programmOff();
                                 admin = false;
                                 online = false;

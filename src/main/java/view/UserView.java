@@ -48,6 +48,22 @@ public class UserView {
         }
     }
 
+    public int getIdForRemove() {
+        System.out.println("Введите id игрушки для удаления: ");
+        while (true) {
+            while (!input.hasNextInt()) {
+                System.out.println("Это не число, попробуйте еще раз");
+                input.next();
+            }
+            int idForRemove = input.nextInt();
+            if (idForRemove < 0) {
+                System.out.println("Число должно быть больше 0, попробуйте еще раз");
+            } else {
+                return idForRemove;
+            }
+        }
+    }
+
     public void succesToyAdd(){
         System.out.println("Новая игрушка успешно добавлена");
     }
@@ -67,9 +83,10 @@ public class UserView {
         System.out.println("1 - Посмотреть список игрушек учавствующих в розыгрыше\n"+
                 "2 - Добавить новую игрушку\n" +
                 "3 - Быстрое удаление игрушки по названию (1 шт.)\n" +
-                "4 - Посмотреть очередь на выдачу\n" +
-                "5 - Выйти из режима администратора\n"+
-                "6 - Завершить работу программы\n");
+                "4 - Удалить позицию по id\n" +
+                "5 - Посмотреть очередь на выдачу\n" +
+                "6 - Выйти из режима администратора\n"+
+                "7 - Завершить работу программы\n");
     }
 
     public void playerMenu() {

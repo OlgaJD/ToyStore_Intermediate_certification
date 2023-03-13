@@ -28,7 +28,6 @@ public class AdminFunctions {
         return newToy;
     }
 
-
     public void putToy() {
         UserView adminView = new UserView();
         Toy newToy = createToy();
@@ -45,7 +44,6 @@ public class AdminFunctions {
             adminView.succesToyAdd();
         }
     }
-
 
     public void removeToy(){
         UserView adminView = new UserView();
@@ -70,4 +68,36 @@ public class AdminFunctions {
         adminErrorView.unSuccesToyFind();
     }
 
+//    public void removeToysByID() {
+//        ErrorView adminErrorView = new ErrorView();
+//        UserView adminView = new UserView();
+//        int removeIndex = adminView.getIdForRemove();
+//        int index = -1;
+//        for (int i = 0; i < toysList.size(); i++) {
+//            if (toysList.get((i)).getId() == removeIndex) {
+//                index = i;
+////                toysList.remove(i);
+////                System.out.println("Удалено");
+////                return;
+//            }
+//        }
+//        toysList.remove(index);
+//        System.out.println("Удалено");
+//    }
+
+
+    public void removeToysByID() {
+        UserView adminView = new UserView();
+        int removeIndex = adminView.getIdForRemove();
+        try {
+            for (int i = 0; i < toysList.size(); i++) {
+                if (toysList.get((i)).getId() == removeIndex) {
+                    toysList.remove(i);
+                }
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
