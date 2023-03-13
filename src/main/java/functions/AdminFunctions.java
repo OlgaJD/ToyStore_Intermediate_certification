@@ -68,24 +68,6 @@ public class AdminFunctions {
         adminErrorView.unSuccesToyFind();
     }
 
-//    public void removeToysByID() {
-//        ErrorView adminErrorView = new ErrorView();
-//        UserView adminView = new UserView();
-//        int removeIndex = adminView.getIdForRemove();
-//        int index = -1;
-//        for (int i = 0; i < toysList.size(); i++) {
-//            if (toysList.get((i)).getId() == removeIndex) {
-//                index = i;
-////                toysList.remove(i);
-////                System.out.println("Удалено");
-////                return;
-//            }
-//        }
-//        toysList.remove(index);
-//        System.out.println("Удалено");
-//    }
-
-
     public void removeToysByID() {
         UserView adminView = new UserView();
         int removeIndex = adminView.getIdForRemove();

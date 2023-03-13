@@ -3,13 +3,10 @@ package functions;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
 import java.io.FileWriter;
 
 public class FileWorker {
     private String dataFile = "distributed_prize.txt";
-
 
     public void saveData() {
         DateFormat dateFormat = new SimpleDateFormat("d.MM.yyyyг., HH:mm");
@@ -24,6 +21,4 @@ public class FileWorker {
             System.out.println(ex.getMessage());
         }
     }
-
-
 }
