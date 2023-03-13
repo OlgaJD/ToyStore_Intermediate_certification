@@ -8,8 +8,9 @@ public class AdminFunctions {
 
     public void getToysList(){
         UserView adminView = new UserView();
+        ErrorView adminErrorView = new ErrorView();
         if (toysList.isEmpty()){
-            System.out.println("Лист пуст");
+            adminErrorView.actualToysListIsEmpty();
         } else {
             adminView.actualToysList();
             toysList.forEach(n -> System.out.println(n.getToyInfo()));
@@ -27,27 +28,24 @@ public class AdminFunctions {
         return newToy;
     }
 
+
     public void putToy() {
         UserView adminView = new UserView();
         Toy newToy = createToy();
-        if(!toysList.isEmpty()) {  // функция не доработана. сразвнивает и правильно работает только с первыйм значением в цикле
-            for (Toy toy: toysList) {
-                if(toy.getName().equals(newToy.getName()) && toy.getDropChance() == newToy.getDropChance()) {
-                    toy.setAmount(toy.getAmount() + newToy.getAmount());
-                    adminView.succesToyAdd();
-                    return;
-                }
-                toysList.add(newToy);
+        boolean done = false;
+        for (Toy toy : toysList) {
+            if (toy.getName().equalsIgnoreCase(newToy.getName())) {
+                toy.setAmount(toy.getAmount() + newToy.getAmount());
                 adminView.succesToyAdd();
-                return;
+                done = true;
             }
         }
-        if(toysList.isEmpty()) {
+        if (!done) {
             toysList.add(newToy);
             adminView.succesToyAdd();
         }
-
     }
+
 
     public void removeToy(){
         UserView adminView = new UserView();
@@ -59,10 +57,12 @@ public class AdminFunctions {
                 index = i;
                 if (toysList.get(i).getAmount() == 1) {
                     toysList.remove(index);
+                    adminView.succesToyremove();
                 }
                 else {
                     int count = toysList.get(i).getAmount();
                     toysList.get(i).setAmount(count-1);
+                    adminView.succesToyremove();
                 }
                 return;
             }

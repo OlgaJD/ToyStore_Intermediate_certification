@@ -16,7 +16,8 @@ public class FileWorker {
         String date = dateFormat.format(new Date());
         SystemFunction systemWork = new SystemFunction();
         try (FileWriter writer  = new FileWriter(dataFile, true)) {
-            writer.append((systemWork.getDataSave()) + ". " + "Выдан: " + date + "\n");
+            writer.append((systemWork.getDataSave()) + ". " + "Выдан: " + date);
+            writer.append("\n");
             writer.flush();
             writer.close();
         } catch (Exception ex) {

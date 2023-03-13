@@ -82,12 +82,21 @@ public class UserView {
         System.out.println("Поздравляем! Ваш выйгрыш - " + prize.getName());
     }
 
-//    public void prizOut() {
-//        System.out.print("Спасибо за участие! Вы можете забрать свой приз - ");
-//    }
+
+    public void hello() {
+        System.out.println("Приветствую Вас на розыгрыше призов!\n" +
+                            "Введите свое имя для участия:\n");
+    }
+    public void helloAdmin() {
+        System.out.println("Вы вошли как администратор. Выберите пункт меню: ");
+    }
 
     public void goodbye() {
         System.out.println("До новых встреч!");
+    }
+
+    public void programmOff() {
+        System.out.println("Работа программы завершена");
     }
 
 

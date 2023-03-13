@@ -1,20 +1,3 @@
-//    mainMenu() // завершить программу может только администратор
-//          1 - для входа от имени администратора
-//          2 - для входа игрока
-//          adminMenu()
-//              1 - Посмотреть список игрушек
-//              2 - Добавить новую игрушку
-//              3 - Убрать игрушку
-//              4 - Посмотреть очередь
-//              5 - Выйти из режима администратора
-//              6 - Завершить работу программы
-//          playerMenu()
-//             1 - чтобы начать играть нажмите
-//             2 - чтобы забрать приз нажмите
-//             3 - для выхода из игры нажмите
-//
-//      Исключения
-
 package controller;
 
 import functions.AdminFunctions;
@@ -24,9 +7,7 @@ import functions.SystemFunction;
 import model.Toy;
 import view.ErrorView;
 import view.UserView;
-
 import java.util.Scanner;
-import static model.Toy.toysList;
 
 public class Controller {
     public static void run(){
@@ -46,7 +27,7 @@ public class Controller {
             switch (input.next()) {
                 case "1":
                     admin = true;
-                    System.out.println("Вы вошли как администратор. Выберите пункт меню: ");
+                    userView.helloAdmin();
                     while (admin) {
                         userView.adminMenu();
                         switch (input.next()) {
@@ -55,13 +36,9 @@ public class Controller {
                                 break;
                             case "2":
                                 adminWork.putToy();
-                                toysList.forEach(n -> System.out.println(n.getToyInfo())); // проверка, добавляет, но меняет количество при совпадении только у первой позиции
-                                System.out.println("Добавить");
                                 break;
                             case "3":
                                 adminWork.removeToy();
-                                userView.succesToyremove();
-                                System.out.println("Убрать");
                                 break;
                             case "4":
                                 systemWork.getPrizeQue();
@@ -70,7 +47,7 @@ public class Controller {
                                 admin = false;
                                 break;
                             case "6":
-                                userView.goodbye();
+                                userView.programmOff();
                                 admin = false;
                                 online = false;
                                 input.close();
@@ -82,27 +59,25 @@ public class Controller {
                     break;
                 case "2":
                     player = true;
-                    System.out.println("Приветствую Вас на розыгрыше призов!\n" +
-                            "Введите свое имя для участия:\n");
+                    userView.hello();
                     playerName = input.next();
                     System.out.println("Отлично, "+ playerName + "!\nВыберите дальнейшую команду:\n");
                     while (player){
                         userView.playerMenu();
                         switch (input.next()) {
                             case "1":
-                                Toy prize = playerWork.play();  // получили игрушку
-                                systemWork.putPrizeToQue(prize);  // добавили игрушку в очередь
-                                userView.greeting(prize); // поздравили пользователя написали что выйгрвл
-                                systemWork.removeToyAfterWonPrize(prize);
+                                Toy prize = playerWork.play();
+                                systemWork.putPrizeToQue(prize);
+                                userView.greeting(prize);
+                                systemWork.removeToyAfterWon(prize);
                                 break;
-                            case "2": // забрать приз
+                            case "2":
                                 fileWorker.saveData();
                                 systemWork.removePrizeFromQue();
                                 break;
                             case "3":
-                                System.out.println("выход");
                                 player = false;
-                                System.out.println("");
+                                userView.goodbye();
                                 break;
                             default:
                                 ErrorView.incorrectInput();
@@ -112,12 +87,7 @@ public class Controller {
                 default:
                     ErrorView.incorrectInput();
             }
-
         }
-
     }
-
-
-
 
 }
